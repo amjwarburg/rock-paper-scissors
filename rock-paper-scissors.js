@@ -58,65 +58,62 @@ function playRound(playerSelection, computerSelection) {
 
   // return result
   return winner;
-
-}
-// ensure player input is accurate
-function getPlayerChoice() {
   
-  let response
-
-  while (true) {
-    response = prompt('What you gonna do? (rock, paper or scissors?)');
-    response = response.toLowerCase();
-    switch (response) {
-      case 'rock':
-      case 'paper':
-      case 'scissors':
-        return response
-        break;
-      default: 
-        console.log("Try again.");
-    }
-  }
 }
 
 // declare function for full game
 function game() {
-  let outcome;
 
-  // declare variables for the score
-  let playerScore = 0;
-  let computerScore = 0;
+let playerSelection
+computerSelection = getComputerChoice();
+  
+let outcome
 
-  // play five rounds
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = getPlayerChoice();
-    const computerSelection = getComputerChoice();
+
     
-    outcome = playRound(playerSelection, computerSelection);
+// declare variables for the score
+let playerScore = 0;
+let computerScore = 0;
 
-    // increment score based on outcome
-    if (outcome === 'player') {
-      ++playerScore
-    } else if (outcome === 'computer') {
-      ++computerScore
-    } else {
 
-    }
+let rock = document.querySelector('.rock');
+rock.addEventListener('click', () => {
+outcome = playRound('rock', getComputerChoice())
+})
 
-    // declare score each round
-    console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
-  } 
+let paper = document.querySelector('.paper');
+paper.addEventListener('click', () => {
+playRound(playerSelection = 'paper', getComputerChoice())  
+})
 
-  // Output scores and result
-  console.log('Player scored: ' + playerScore + ' Computer scored: ' + computerScore)
-  if (playerScore > computerScore) {
+let scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', () => {
+playRound(playerSelection = 'scissors', getComputerChoice())  
+})
+  
+// increment score based on outcome
+if (outcome === 'player') {
+  ++playerScore
+} else if (outcome === 'computer') {
+  ++computerScore
+} else {
+
+}
+
+
+// declare score each round
+ console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
+  
+
+/* Output scores and result
+console.log('Player scored: ' + playerScore + ' Computer scored: ' + computerScore)
+if (playerScore > computerScore) {
     console.log('Player wins!')
-  } else if (computerScore > playerScore) {
-    console.log('Computer wins!')
-  } else if (computerScore === playerScore) {
-    console.log ('It\'s a tie')
-  }
+} else if (computerScore > playerScore) {
+  console.log('Computer wins!')
+} else if (computerScore === playerScore) {
+  console.log ('It\'s a tie')
+ } */
 }
 
 game()
