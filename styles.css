@@ -1,0 +1,9 @@
+.choice {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.score {
+    display: flex;
+    justify-content: space-evenly;
+}

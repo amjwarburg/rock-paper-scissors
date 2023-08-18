@@ -16,12 +16,26 @@ function getComputerChoice() {
 }
 
 // declare function for each round
+
+const playerChoiceText = document.querySelector('.p-choice-text')
+const computerChoiceText = document.querySelector('.c-choice-text')
+let playerScore = 0;
+let computerScore = 0;
+const playerScoreText = document.querySelector('.p-score-text')
+const computerScoreText = document.querySelector('.c-score-text')
+const champion = document.querySelector('.champion')
+
 function playRound(playerSelection, computerSelection) {
-  // log player choice
-  const rounds = document.querySelector('.rounds')
-  console.log("Player choice: "+playerSelection);
-  // log computer choice
-  console.log('Computer choice: '+computerSelection);
+  const playerChoice = `Player choice: ${playerSelection}`
+  const computerChoice = `Computer choice: ${computerSelection}`
+  playerChoiceText.textContent = playerChoice;
+  computerChoiceText.textContent = computerChoice;
+
+
+  const pScore = `Player: ${playerScore}`
+  const cScore = `Computer: ${computerScore}`
+  playerScoreText.textContent = pScore;
+  computerScoreText.textContent = cScore;
 
   // declare variable to hold result
   let winner = ""; // One of player, computer, tie
@@ -65,14 +79,15 @@ function playRound(playerSelection, computerSelection) {
 // declare function for full game
 function game() {
 
-let playerSelection;
+  
+
+
 computerSelection = getComputerChoice();
   
 let outcome
     
 // declare variables for the score
-let playerScore = 0;
-let computerScore = 0;
+
 
 
   let rock = document.querySelector('.rock');
@@ -82,9 +97,8 @@ if (outcome === 'player') {
   ++playerScore
 } else if (outcome === 'computer') {
   ++computerScore
-} else {
+} 
 
-}
 console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
 if (playerScore === 5) {
   console.log('Player wins!');
@@ -100,9 +114,8 @@ if (outcome === 'player') {
   ++playerScore
 } else if (outcome === 'computer') {
   ++computerScore
-} else {
+} 
 
-}
 console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
 if (playerScore === 5) {
   console.log('Player wins!')
@@ -118,13 +131,12 @@ if (outcome === 'player') {
   ++playerScore
 } else if (outcome === 'computer') {
   ++computerScore
-} else {
+} 
 
-}
 if (playerScore === 5) {
-  console.log('Player wins!')
+  champion.textContent = 'Player wins!';
 } else if (computerScore === 5) {
-  console.log('Computer wins!') 
+  champion.textContent = 'Computer wins!'
 }
 
 console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
