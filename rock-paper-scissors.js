@@ -18,6 +18,7 @@ function getComputerChoice() {
 // declare function for each round
 function playRound(playerSelection, computerSelection) {
   // log player choice
+  const rounds = document.querySelector('.rounds')
   console.log("Player choice: "+playerSelection);
   // log computer choice
   console.log('Computer choice: '+computerSelection);
@@ -64,34 +65,19 @@ function playRound(playerSelection, computerSelection) {
 // declare function for full game
 function game() {
 
-let playerSelection
+let playerSelection;
 computerSelection = getComputerChoice();
   
 let outcome
-
-
     
 // declare variables for the score
 let playerScore = 0;
 let computerScore = 0;
 
 
-let rock = document.querySelector('.rock');
+  let rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
 outcome = playRound('rock', getComputerChoice())
-})
-
-let paper = document.querySelector('.paper');
-paper.addEventListener('click', () => {
-playRound(playerSelection = 'paper', getComputerChoice())  
-})
-
-let scissors = document.querySelector('.scissors');
-scissors.addEventListener('click', () => {
-playRound(playerSelection = 'scissors', getComputerChoice())  
-})
-  
-// increment score based on outcome
 if (outcome === 'player') {
   ++playerScore
 } else if (outcome === 'computer') {
@@ -99,21 +85,55 @@ if (outcome === 'player') {
 } else {
 
 }
+console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
+if (playerScore === 5) {
+  console.log('Player wins!');
+} else if (computerScore === 5) {
+  console.log('Computer wins!');
+}
+})
+
+let paper = document.querySelector('.paper');
+paper.addEventListener('click', () => {
+outcome = playRound('paper', getComputerChoice())  
+if (outcome === 'player') {
+  ++playerScore
+} else if (outcome === 'computer') {
+  ++computerScore
+} else {
+
+}
+console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
+if (playerScore === 5) {
+  console.log('Player wins!')
+} else if (computerScore === 5) {
+  console.log('Computer wins!') 
+}
+})
+
+let scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', () => {
+outcome = playRound('scissors', getComputerChoice())  
+if (outcome === 'player') {
+  ++playerScore
+} else if (outcome === 'computer') {
+  ++computerScore
+} else {
+
+}
+if (playerScore === 5) {
+  console.log('Player wins!')
+} else if (computerScore === 5) {
+  console.log('Computer wins!') 
+}
+
+console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
+})
 
 
-// declare score each round
- console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
-  
 
-/* Output scores and result
-console.log('Player scored: ' + playerScore + ' Computer scored: ' + computerScore)
-if (playerScore > computerScore) {
-    console.log('Player wins!')
-} else if (computerScore > playerScore) {
-  console.log('Computer wins!')
-} else if (computerScore === playerScore) {
-  console.log ('It\'s a tie')
- } */
+
+
 }
 
 game()
