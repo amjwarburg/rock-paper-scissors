@@ -7,3 +7,39 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+button {
+    background-color: rgb(17, 26, 78);
+    color: rgb(255, 255, 243);
+    font-family: 'Press Start 2P';
+    font-size: 50px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    color: rgb(3, 10, 44);
+    font-family: 'Press Start 2P';
+    font-size: 10px;
+}
+
+body {
+    background-color: rgb(176, 207, 248);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.gap {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}

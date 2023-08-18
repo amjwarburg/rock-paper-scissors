@@ -15,27 +15,40 @@ function getComputerChoice() {
   }
 }
 
-// declare function for each round
-
-const playerChoiceText = document.querySelector('.p-choice-text')
-const computerChoiceText = document.querySelector('.c-choice-text')
 let playerScore = 0;
 let computerScore = 0;
-const playerScoreText = document.querySelector('.p-score-text')
-const computerScoreText = document.querySelector('.c-score-text')
-const champion = document.querySelector('.champion')
 
+const playerScoreText = document.querySelector('.p-score-text');
+const computerScoreText = document.querySelector('.c-score-text');
+
+const playerChoiceText = document.querySelector('.p-choice-text');
+const computerChoiceText = document.querySelector('.c-choice-text');
+
+const champion = document.querySelector('.champion');
+
+
+function displayScore() {
+const pScore = `Player: ${playerScore}`;
+const cScore = `Computer: ${computerScore}`;
+playerScoreText.textContent = pScore;
+computerScoreText.textContent = cScore;
+console.log(pScore)
+console.log(cScore)
+if (playerScore === 5) {
+  champion.textContent = 'Player wins!';
+} else if (computerScore === 5) {
+  champion.textContent = 'Computer wins!'
+}
+}
+
+// declare function for each round
 function playRound(playerSelection, computerSelection) {
-  const playerChoice = `Player choice: ${playerSelection}`
-  const computerChoice = `Computer choice: ${computerSelection}`
+  const playerChoice = `Player choice: ${playerSelection}`;
+  const computerChoice = `Computer choice: ${computerSelection}`;
   playerChoiceText.textContent = playerChoice;
   computerChoiceText.textContent = computerChoice;
-
-
-  const pScore = `Player: ${playerScore}`
-  const cScore = `Computer: ${computerScore}`
-  playerScoreText.textContent = pScore;
-  computerScoreText.textContent = cScore;
+  
+  
 
   // declare variable to hold result
   let winner = ""; // One of player, computer, tie
@@ -68,9 +81,6 @@ function playRound(playerSelection, computerSelection) {
     winner = 'tie'; 
   } 
 
-  // log outcome
-  console.log("Winner/tie: "+winner);
-
   // return result
   return winner;
   
@@ -78,71 +88,42 @@ function playRound(playerSelection, computerSelection) {
 
 // declare function for full game
 function game() {
-
   
-
-
 computerSelection = getComputerChoice();
   
 let outcome
     
-// declare variables for the score
-
-
-
-  let rock = document.querySelector('.rock');
+let rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
 outcome = playRound('rock', getComputerChoice())
-if (outcome === 'player') {
-  ++playerScore
-} else if (outcome === 'computer') {
-  ++computerScore
-} 
-
-console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
-if (playerScore === 5) {
-  console.log('Player wins!');
-} else if (computerScore === 5) {
-  console.log('Computer wins!');
-}
+scoreKeeper()
+displayScore()
 })
 
 let paper = document.querySelector('.paper');
 paper.addEventListener('click', () => {
-outcome = playRound('paper', getComputerChoice())  
-if (outcome === 'player') {
-  ++playerScore
-} else if (outcome === 'computer') {
-  ++computerScore
-} 
-
-console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
-if (playerScore === 5) {
-  console.log('Player wins!')
-} else if (computerScore === 5) {
-  console.log('Computer wins!') 
-}
+outcome = playRound('paper', getComputerChoice()) 
+scoreKeeper()
+displayScore()
 })
 
 let scissors = document.querySelector('.scissors');
 scissors.addEventListener('click', () => {
 outcome = playRound('scissors', getComputerChoice())  
-if (outcome === 'player') {
-  ++playerScore
-} else if (outcome === 'computer') {
-  ++computerScore
-} 
-
-if (playerScore === 5) {
-  champion.textContent = 'Player wins!';
-} else if (computerScore === 5) {
-  champion.textContent = 'Computer wins!'
-}
-
-console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
+scoreKeeper()
+displayScore()
 })
 
 
+function scoreKeeper() {
+  if (outcome === 'player') {
+    ++playerScore;
+  } else if (outcome === 'computer') {
+    ++computerScore;
+  } else {
+    
+  }
+}
 
 
 
